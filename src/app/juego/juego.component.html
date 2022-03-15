@@ -1,0 +1,25 @@
+<div class="contG">
+    <h2>Juego de adivinación</h2>
+    <h3>Parámetros de configuración del juego</h3>
+
+    Nombre:<br><input type="text" [(ngModel)]="nombre"><br>
+    Apellido: <br><input type="text" [(ngModel)]="apellido"><br>
+    Rángo de números a generar:<br><input type="text" [(ngModel)]="rango"><br>
+    Número de intentos:<br><input type="text" [(ngModel)]="intentos"><br>
+    <button (click)="getConf()">Recoger Datos</button>
+</div>
+<div class="contG" *ngIf="config[0].nombre != ''" >
+    <h3>Bienvenido - {{config[0].nombre}}</h3>
+    <input type="text" [(ngModel)]="numero"><br>
+    <span *ngIf="this.resultado !=''">¿has adivinado?:{{this.resultado}}</span><br>
+    Intentos restantes: {{config[0].intentos}}<br>
+    <button (click)="getJug()">Enviar</button>
+        <div *ngIf="config[0].intentos == 0 || resultado == 'Si'" >
+            <h3>Has terminado el juego</h3>
+            <ul>
+                <li *ngFor="let z of total">
+                    {{z}} 
+                </li>
+            </ul>
+        </div>
+</div>
